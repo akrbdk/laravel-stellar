@@ -12,9 +12,20 @@
             "dist": {
                 "type": "path",
                 "url": "packages/icons",
-                "reference": "7e79685c05f246dc39ee5c67e95c9de7382f63a3"
+                "reference": "953ce53d2d8bc3ca0e87e166cebd3927c9afc980"
+            },
+            "require": {
+                "illuminate/support": "^10.0",
+                "php": "^8.1"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Akrbdk\\Icons\\Providers\\IconsServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Akrbdk\\Icons\\": "src/"

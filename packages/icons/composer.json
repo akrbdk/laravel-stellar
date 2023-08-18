@@ -15,5 +15,15 @@
             "Akrbdk\\Icons\\": "src/"
         }
     },
-    "require": {}
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Akrbdk\\Icons\\Providers\\IconsServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0"
+    }
 }
