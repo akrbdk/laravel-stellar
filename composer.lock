@@ -4,8 +4,36 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa322c53454393ed775cfe4807d54a50",
+    "content-hash": "22c8e8130224974e4d628be7c4a301dc",
     "packages": [
+        {
+            "name": "akrbdk/icons",
+            "version": "1.0.1",
+            "dist": {
+                "type": "path",
+                "url": "packages/icons",
+                "reference": "7e79685c05f246dc39ee5c67e95c9de7382f63a3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Akrbdk\\Icons\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Karabudka",
+                    "email": "akarabudka@gmail.com"
+                }
+            ],
+            "description": "Laravel module Icons",
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -8046,7 +8074,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,

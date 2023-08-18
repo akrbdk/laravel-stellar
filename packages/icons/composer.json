@@ -1,0 +1,19 @@
+{
+    "name": "akrbdk/icons",
+    "description": "Laravel module Icons",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Karabudka",
+            "email": "akarabudka@gmail.com"
+        }
+    ],
+    "version": "1.0.1",
+    "autoload": {
+        "psr-4" : {
+            "Akrbdk\\Icons\\": "src/"
+        }
+    },
+    "require": {}
+}
