@@ -6,13 +6,21 @@ use Illuminate\Support\ServiceProvider;
 
 class IconsServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'akrbdk-icons');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'akrbdk-icons');
     }
 
-    public function boot()
+    public function boot(): void
     {
+        $this->registerMigrations();
+    }
 
+    protected function registerMigrations(): void
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+        $this->publishes([
+            __DIR__ . '/../../database/migrations' => database_path('migrations')
+        ], 'migrations');
     }
 }
