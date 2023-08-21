@@ -5,9 +5,9 @@ namespace Akrbdk\News\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Akrbdk\News\Models\News>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Akrbdk\News\Models\Category>
  */
-class NewsFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.

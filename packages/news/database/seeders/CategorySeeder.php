@@ -4,7 +4,7 @@ namespace Akrbdk\News\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class NewsSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
