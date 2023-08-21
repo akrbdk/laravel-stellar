@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Element extends Model
 {
     use HasFactory;
+
+    public const DEFAULT_SORT = 100;
+    public const DEFAULT_INT = 0;
 }
