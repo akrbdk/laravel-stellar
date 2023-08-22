@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('sort')->nullable()->default(Element::DEFAULT_SORT)->index();
             $table->unsignedBigInteger('preview_image')->nullable()->default(Element::DEFAULT_INT);
             $table->unsignedBigInteger('main_image')->nullable()->default(Element::DEFAULT_INT);
+            $table->timestamp('publish_date')->nullable()->index();
             $table->timestamp('active_from')->nullable()->index();
             $table->timestamp('active_to')->nullable()->index();
             $table->char('locale', 2)->default('ua')->index();
