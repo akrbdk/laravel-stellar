@@ -61,11 +61,11 @@ class Element extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->withDefault();
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault();
     }
 }

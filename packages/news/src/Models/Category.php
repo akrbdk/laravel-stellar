@@ -45,7 +45,7 @@ class Category extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault();
     }
 
     public function elements(): HasMany
