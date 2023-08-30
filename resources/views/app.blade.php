@@ -33,6 +33,10 @@
     <!-- Main -->
     <div id="main">
 
+        <x-akrbdk-news-itemsList />
+        <x-akrbdk-news-recommendList />
+        <x-akrbdk-news-itemCard />
+
         <!-- Introduction -->
         <section id="intro" class="main">
             <div class="spotlight">

@@ -2,6 +2,10 @@
 
 namespace Akrbdk\News\Providers;
 
+use Akrbdk\News\View\Components\ItemCard\ItemCard;
+use Akrbdk\News\View\Components\ItemsList\ItemsList;
+use Akrbdk\News\View\Components\RecommendList\RecommendList;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use function Laravel\Prompts\select;
 
@@ -65,6 +69,10 @@ class NewsServiceProvider extends ServiceProvider
 
     private function registerComponents(): void
     {
-        //
+        Blade::components([
+            ItemCard::class => ItemCard::getAlias(),
+            ItemsList::class => ItemsList::getAlias(),
+            RecommendList::class => RecommendList::getAlias()
+        ]);
     }
 }
