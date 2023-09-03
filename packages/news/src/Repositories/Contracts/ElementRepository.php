@@ -3,7 +3,7 @@
 namespace Akrbdk\News\Repositories\Contracts;
 
 use Akrbdk\News\Models\Element;
-use Ramsey\Collection\Collection;
+use Illuminate\Support\Collection;
 
 interface ElementRepository extends BaseRepository
 {

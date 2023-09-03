@@ -35,6 +35,10 @@ class Element extends Model
 
     public const DEFAULT_SORT = 100;
     public const DEFAULT_INT = 0;
+    /**
+     * @var mixed|string|null
+     */
+    public ?string $publishDateFormat = null;
 
     protected $fillable = [
         'title',
@@ -47,11 +51,7 @@ class Element extends Model
         'active_to',
         'locale',
         'preview_text',
-        'body_text',
-        '',
-        '',
-        '',
-        '',
+        'body_text'
     ];
 
     protected static function newFactory(): Factory

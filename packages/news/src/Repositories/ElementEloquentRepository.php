@@ -5,7 +5,7 @@ namespace Akrbdk\News\Repositories;
 use Akrbdk\News\Models\Element;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
-use Ramsey\Collection\Collection;
+use Illuminate\Support\Collection;
 
 class ElementEloquentRepository implements Contracts\ElementRepository
 {
@@ -57,7 +57,7 @@ class ElementEloquentRepository implements Contracts\ElementRepository
             ])->firstOrNew();
     }
 
-    public function getList(array $categories, int $limit, int $offset): Collection
+    public function getList(array $categories, int $limit = 0, int $offset = 0): Collection
     {
         $query = $this->model::query()
             ->select([
@@ -93,10 +93,6 @@ class ElementEloquentRepository implements Contracts\ElementRepository
             ])
             ->orderByDesc('publish_date')
             ->orderByDesc('id');
-
-            if($limit){
-                $query->limit($limit);
-            }
 
         if($limit){
             $query->limit($limit);
