@@ -2,12 +2,11 @@
 
 namespace Akrbdk\News\View\Components\RecommendList;
 
-use Akrbdk\News\View\Contracts\ComponentAlias;
+use Akrbdk\News\View\Contracts\BaseComponent;
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
 
-class RecommendList extends Component implements ComponentAlias
+class RecommendList extends BaseComponent
 {
     /**
      * Create a new component instance.
@@ -15,6 +14,11 @@ class RecommendList extends Component implements ComponentAlias
     public function __construct()
     {
         //
+    }
+
+    public static function getAlias(): string
+    {
+        return 'akrbdk-news-recommendList';
     }
 
     /**
@@ -25,8 +29,8 @@ class RecommendList extends Component implements ComponentAlias
         return view('akrbdk-news::components.recommend-list');
     }
 
-    public static function getAlias(): string
+    protected function getRenderData(): iterable
     {
-        return 'akrbdk-news-recommendList';
+        // TODO: Implement getRenderData() method.
     }
 }

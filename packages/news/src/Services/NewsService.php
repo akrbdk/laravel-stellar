@@ -31,7 +31,7 @@ class NewsService implements Contracts\BaseService
 
     public function prepareElements(Collection $elements): Collection
     {
-        $dateFormat = config('akrbdk-news.dateFormat', 'dd.mm.yyyy');
+        $dateFormat = config('akrbdk-news.dateFormat', 'j F Y');
         $elements->each(function (Element $element) use ($dateFormat){
             $element->publishDateFormat = $element->publish_date?->translatedFormat($dateFormat);
         });

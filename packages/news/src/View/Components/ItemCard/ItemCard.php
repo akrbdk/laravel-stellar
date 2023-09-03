@@ -2,12 +2,11 @@
 
 namespace Akrbdk\News\View\Components\ItemCard;
 
-use Akrbdk\News\View\Contracts\ComponentAlias;
+use Akrbdk\News\View\Contracts\BaseComponent;
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
 
-class ItemCard extends Component implements ComponentAlias
+class ItemCard extends BaseComponent
 {
     /**
      * Create a new component instance.
@@ -15,6 +14,11 @@ class ItemCard extends Component implements ComponentAlias
     public function __construct()
     {
         //
+    }
+
+    public static function getAlias(): string
+    {
+        return 'akrbdk-news-itemCard';
     }
 
     /**
@@ -25,8 +29,8 @@ class ItemCard extends Component implements ComponentAlias
         return view('akrbdk-news::components.item-card');
     }
 
-    public static function getAlias(): string
+    protected function getRenderData(): iterable
     {
-        return 'akrbdk-news-itemCard';
+        // TODO: Implement getRenderData() method.
     }
 }

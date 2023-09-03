@@ -2,18 +2,29 @@
 
 namespace Akrbdk\News\Providers;
 
+use Akrbdk\News\Repositories\CategoryEloquentRepository;
+use Akrbdk\News\Repositories\Contracts\CategoryRepository;
+use Akrbdk\News\Repositories\Contracts\ElementRepository;
+use Akrbdk\News\Repositories\ElementEloquentRepository;
+use Akrbdk\News\Services\Contracts\BaseService;
+use Akrbdk\News\Services\NewsService;
 use Akrbdk\News\View\Components\ItemCard\ItemCard;
 use Akrbdk\News\View\Components\ItemsList\ItemsList;
 use Akrbdk\News\View\Components\RecommendList\RecommendList;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use function Laravel\Prompts\select;
 
 class NewsServiceProvider extends ServiceProvider
 {
     public const MODULE_VERSION = '1.0.1';
 
     public const MODULE_NAME = 'news';
+
+    public array $bindings = [
+        CategoryRepository::class => CategoryEloquentRepository::class,
+        ElementRepository::class => ElementEloquentRepository::class,
+        BaseService::class => NewsService::class
+    ];
 
     /**
      * Register services.

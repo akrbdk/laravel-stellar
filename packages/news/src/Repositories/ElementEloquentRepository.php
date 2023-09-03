@@ -4,7 +4,7 @@ namespace Akrbdk\News\Repositories;
 
 use Akrbdk\News\Models\Element;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 class ElementEloquentRepository implements Contracts\ElementRepository

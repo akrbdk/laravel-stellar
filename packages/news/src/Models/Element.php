@@ -54,6 +54,10 @@ class Element extends Model
         'body_text'
     ];
 
+    protected $casts = [
+        'publish_date' => 'datetime'
+    ];
+
     protected static function newFactory(): Factory
     {
         return ElementFactory::new();
