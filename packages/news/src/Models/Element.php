@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Orchid\Screen\AsSource;
 
 /**
  * @property int $id
@@ -32,6 +33,7 @@ use Illuminate\Support\Carbon;
 class Element extends Model
 {
     use HasFactory;
+    use AsSource;
 
     public const DEFAULT_SORT = 100;
     public const DEFAULT_INT = 0;
