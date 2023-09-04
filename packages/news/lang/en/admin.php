@@ -7,5 +7,8 @@ return [
         'title' => 'News',
         'categoriesTitle' => 'Categories',
         'elementsTitle' => 'Elements',
+    ],
+    'permission' => [
+        'access' => 'Full access to module'
     ]
 ];

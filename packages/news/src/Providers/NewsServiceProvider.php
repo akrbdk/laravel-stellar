@@ -20,6 +20,8 @@ class NewsServiceProvider extends ServiceProvider
 
     public const MODULE_NAME = 'news';
 
+    public const PERMISSION = 'package.news.access';
+
     public array $bindings = [
         CategoryRepository::class => CategoryEloquentRepository::class,
         ElementRepository::class => ElementEloquentRepository::class,
@@ -33,6 +35,7 @@ class NewsServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'akrbdk-' . self::MODULE_NAME);
         $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'akrbdk-' . self::MODULE_NAME);
+        $this->app->register(NewsOrchidServiceProvider::class);
     }
 
     /**
@@ -49,7 +52,7 @@ class NewsServiceProvider extends ServiceProvider
         $this->registerComponents();
 
         $this->publishes([
-            __DIR__ . '/../../lang' => resource_path('akrbdk-' . self::MODULE_NAME)
+            __DIR__ . '/../../lang' => resource_path('lang/vendor/akrbdk-' . self::MODULE_NAME)
         ]);
     }
 
