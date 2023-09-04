@@ -23,7 +23,7 @@ Route::domain(config('platform.domain'))
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
-                    ->push(trans('akrbdk-news:admin.menu.title'))
+                    ->push(trans('akrbdk-news::admin.menu.title'))
             );
 
         Route::screen('news/category/edit/{category?}', CategoryEditScreen::class)
@@ -31,8 +31,8 @@ Route::domain(config('platform.domain'))
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
-                    ->push(trans('akrbdk-news:admin.menu.title'))
-                    ->push(trans('akrbdk-news:admin.menu.categoriesTitle'))
+                    ->push(trans('akrbdk-news::admin.menu.title'))
+                    ->push(trans('akrbdk-news::admin.menu.categoriesTitle'))
             );
 
         Route::screen('news/element/list', ElementListScreen::class)
@@ -40,7 +40,7 @@ Route::domain(config('platform.domain'))
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
-                    ->push(trans('akrbdk-news:admin.menu.title'))
+                    ->push(trans('akrbdk-news::admin.menu.title'))
             );
 
         Route::screen('news/element/edit/{element?}', ElementEditScreen::class)
@@ -48,8 +48,8 @@ Route::domain(config('platform.domain'))
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
-                    ->push(trans('akrbdk-news:admin.menu.title'))
-                    ->push(trans('akrbdk-news:admin.menu.elementsTitle'))
+                    ->push(trans('akrbdk-news::admin.menu.title'))
+                    ->push(trans('akrbdk-news::admin.menu.elementsTitle'))
             );
 
         Route::screen('news/category/{category}/list', CategoryElementListScreen::class)
@@ -57,7 +57,7 @@ Route::domain(config('platform.domain'))
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
-                    ->push(trans('akrbdk-news:admin.menu.title'))
+                    ->push(trans('akrbdk-news::admin.menu.title'))
             );
 
         Route::screen('news/category/{category}/edit/{element?}', CategoryElementEditScreen::class)
@@ -68,7 +68,7 @@ Route::domain(config('platform.domain'))
 
                 return $trail
                     ->parent('platform.index')
-                    ->push(trans('akrbdk-news:admin.menu.title'))
-                    ->push($category->exists ? $category->title : trans('akrbdk-news:admin.menu.categoriesTitle'));
+                    ->push(trans('akrbdk-news::admin.menu.title'))
+                    ->push($category->exists ? $category->title : trans('akrbdk-news::admin.menu.categoriesTitle'));
         });
 });
