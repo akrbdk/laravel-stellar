@@ -6,6 +6,7 @@ return [
     'menu' => [
         'title' => 'News',
         'categoriesTitle' => 'Categories',
+        'subCategoriesTitle' => 'SubCategories',
         'elementsTitle' => 'Elements',
     ],
     'permission' => [
