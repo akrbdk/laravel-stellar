@@ -53,7 +53,7 @@ Route::domain(config('platform.domain'))
             );
 
         Route::screen('news/category/{category}/list', CategoryElementListScreen::class)
-            ->name('platform.news.category.elements.list')
+            ->name('platform.news.category.element.list')
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')

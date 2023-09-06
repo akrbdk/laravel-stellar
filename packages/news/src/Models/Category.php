@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
 /**
@@ -28,6 +29,7 @@ class Category extends Model
 {
     use HasFactory;
     use AsSource;
+    use Filterable;
 
     public const DEFAULT_SORT = 100;
     public const DEFAULT_INT = 0;

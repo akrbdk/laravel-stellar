@@ -4,6 +4,7 @@ namespace Akrbdk\News\Repositories;
 
 use Akrbdk\News\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 class CategoryEloquentRepository implements Contracts\CategoryRepository
@@ -32,5 +33,10 @@ class CategoryEloquentRepository implements Contracts\CategoryRepository
     public function getAll(): Collection
     {
         return $this->model::query()->orderBy('sort')->orderBy('title')->get();
+    }
+
+    public function getAdminList(): LengthAwarePaginator
+    {
+        return $this->model::filters()->defaultSort('sort')->withCount('elements')->paginate();
     }
 }

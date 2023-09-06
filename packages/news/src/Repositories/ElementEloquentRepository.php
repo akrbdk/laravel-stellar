@@ -2,9 +2,11 @@
 
 namespace Akrbdk\News\Repositories;
 
+use Akrbdk\News\Models\Category;
 use Akrbdk\News\Models\Element;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 class ElementEloquentRepository implements Contracts\ElementRepository
@@ -103,5 +105,19 @@ class ElementEloquentRepository implements Contracts\ElementRepository
         }
 
         return $query->get();
+    }
+
+    public function getAdminListByFilter(string $filterClass): LengthAwarePaginator
+    {
+        return $this->model::filters($filterClass)->defaultSort('sort', 'desc')->with('category')->paginate();
+    }
+
+    public function getAdminListByCategoryAndFilter(Category $category, string $filterClass): LengthAwarePaginator
+    {
+        return $this->model::filters($filterClass)
+            ->defaultSort('sort', 'desc')
+            ->with('category')
+            ->where('category_id', $category->getKey())
+            ->paginate();
     }
 }

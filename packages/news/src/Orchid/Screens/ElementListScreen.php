@@ -2,6 +2,10 @@
 
 namespace Akrbdk\News\Orchid\Screens;
 
+use Akrbdk\News\Orchid\Layouts\Element\ListLayout;
+use Akrbdk\News\Orchid\Layouts\ElementSelection;
+use Akrbdk\News\Repositories\Contracts\ElementRepository;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class ElementListScreen extends Screen
@@ -13,17 +17,11 @@ class ElementListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
-    }
+        $this->name = trans('akrbdk-news::admin.menu.elementsTitle');
 
-    /**
-     * The name of the screen displayed in the header.
-     *
-     * @return string|null
-     */
-    public function name(): ?string
-    {
-        return 'ElementListScreen';
+        return [
+            'list' => resolve(ElementRepository::class)->getAdminListByFilter(ElementSelection::class)
+        ];
     }
 
     /**
@@ -33,7 +31,11 @@ class ElementListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(trans('akrbdk-news::admin.orchid.add'))
+            ->icon('bn.plus-circle')
+            ->route('platform.news.element.edit')
+        ];
     }
 
     /**
@@ -43,6 +45,9 @@ class ElementListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            ElementSelection::class,
+            ListLayout::class
+        ];
     }
 }

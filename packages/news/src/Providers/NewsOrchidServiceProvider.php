@@ -59,7 +59,7 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
             }
 
             $activeSubCategory = [
-                route('platform.news.category.elements.list', ['category' => $category]) . '*',
+                route('platform.news.category.element.list', ['category' => $category]) . '*',
                 route('platform.news.category.element.edit', ['category' => $category]) . '/*'
             ];
             $activeSubCategories = array_merge($activeSubCategories, $activeSubCategory);
@@ -68,7 +68,7 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
                 ->sort($category->sort + 100)
                 ->icon('bg.file')
                 ->route(
-                    'platform.news.category.elements.list', ['category' => $category]
+                    'platform.news.category.element.list', ['category' => $category]
                 )
                 ->active($activeSubCategory)
                 ->permission(NewsServiceProvider::PERMISSION);

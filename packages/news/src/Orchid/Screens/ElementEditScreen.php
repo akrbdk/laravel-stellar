@@ -2,6 +2,8 @@
 
 namespace Akrbdk\News\Orchid\Screens;
 
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class ElementEditScreen extends Screen
@@ -13,17 +15,9 @@ class ElementEditScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
-    }
+        $this->name = trans('akrbdk-news::admin.menu.elementsTitle');
 
-    /**
-     * The name of the screen displayed in the header.
-     *
-     * @return string|null
-     */
-    public function name(): ?string
-    {
-        return 'ElementEditScreen';
+        return [];
     }
 
     /**
@@ -33,7 +27,16 @@ class ElementEditScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(trans('akrbdk-news::admin.orchid.back'))
+                ->icon('bn.arrow-left')
+                ->route('platform.news.element.list'),
+            Button::make(trans('akrbdk-news::admin.orchid.delete'))
+                ->icon('bn.trash')
+                ->method('deleteElement')
+                ->confirm(trans('akrbdk-news::admin.orchid.deleteConfirm'))
+                //->canSee()
+        ];
     }
 
     /**

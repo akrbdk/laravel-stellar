@@ -2,10 +2,19 @@
 
 namespace Akrbdk\News\Orchid\Screens;
 
+use Akrbdk\News\Orchid\Layouts\CategorySelection;
+use Akrbdk\News\Orchid\Layouts\Element\ListLayout;
+use Akrbdk\News\Orchid\Layouts\ElementSelection;
+use Akrbdk\News\Repositories\Contracts\CategoryRepository;
+use Akrbdk\News\Repositories\Contracts\ElementRepository;
+use Illuminate\Support\Facades\Route;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class CategoryElementListScreen extends Screen
 {
+    private int $categoryId = 0;
+
     /**
      * Fetch data to be displayed on the screen.
      *
@@ -13,17 +22,17 @@ class CategoryElementListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
-    }
+        $this->name = trans('akrbdk-news::admin.menu.subCategoriesTitle');
+        $this->categoryId = (int)Route::current()->parameter('category');
+        $category = resolve(CategoryRepository::class)->findByPrimary($this->categoryId);
 
-    /**
-     * The name of the screen displayed in the header.
-     *
-     * @return string|null
-     */
-    public function name(): ?string
-    {
-        return 'CategoryElementListScreen';
+        if($category->exists()){
+            $this->name = $category->title;
+        }
+
+        return [
+            'list' => resolve(ElementRepository::class)->getAdminListByCategoryAndFilter($category, ElementSelection::class)
+        ];
     }
 
     /**
@@ -33,7 +42,11 @@ class CategoryElementListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(trans('akrbdk-news::admin.orchid.add'))
+            ->icon('bn.plus-circle')
+            ->route('platform.news.category.element.list', ['category' => $this->categoryId])
+        ];
     }
 
     /**
@@ -43,6 +56,9 @@ class CategoryElementListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            CategorySelection::class,
+            ListLayout::class
+        ];
     }
 }

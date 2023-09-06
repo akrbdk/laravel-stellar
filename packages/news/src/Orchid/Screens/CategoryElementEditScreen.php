@@ -13,17 +13,9 @@ class CategoryElementEditScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
-    }
+        $this->name = trans('akrbdk-news::admin.menu.subCategoriesTitle');
 
-    /**
-     * The name of the screen displayed in the header.
-     *
-     * @return string|null
-     */
-    public function name(): ?string
-    {
-        return 'CategoryElementEditScreen';
+        return [];
     }
 
     /**
