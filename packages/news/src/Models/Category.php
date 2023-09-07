@@ -42,6 +42,11 @@ class Category extends Model
         'active'
     ];
 
+    protected array $allowedSorts = [
+        'title',
+        'alias'
+    ];
+
     protected static function newFactory(): Factory
     {
         return CategoryFactory::new();

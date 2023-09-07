@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
-class CategoryElementListScreen extends Screen
+class CategoryElementListScreen extends ElementListScreen
 {
     private int $categoryId = 0;
 

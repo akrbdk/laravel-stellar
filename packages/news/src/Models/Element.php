@@ -58,6 +58,11 @@ class Element extends Model
         'body_text'
     ];
 
+    protected array $allowedSorts = [
+        'title',
+        'alias'
+    ];
+
     protected $casts = [
         'publish_date' => 'datetime'
     ];
