@@ -1,4 +1,7 @@
 <div>
+    Items list Component
+</div>
+<div>
     <h1>Categories</h1>
     @if(!empty($categories))
         <ul>
@@ -21,3 +24,4 @@
         </ul>
     @endif
 </div>
+<br>
