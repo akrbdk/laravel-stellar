@@ -40,8 +40,8 @@ class ListLayout extends Table
             TD::make('title', trans('akrbdk-news::admin.fields.title'))
                 ->sort()
                 ->render(static function (Element $element) use ($subCategory, $route) {
-                    $route .= '.list';
                     $params = ['element' => $element];
+
                     if ($subCategory) {
                         $params['category'] = $element->category_id;
                     }
@@ -63,15 +63,16 @@ class ListLayout extends Table
                 ->sort()
                 ->defaultHidden(),
             TD::make()->render(static function (Element $element) use ($subCategory, $route) {
-                $route .= '.edit';
                 $params = ['element' => $element];
+
                 if ($subCategory) {
                     $params['category'] = $element->category_id;
                 }
 
                 return Group::make([
                     Link::make()
-                        ->icon($element->active ? 'bg.check-circle-fill' : 'bg.dash-circle'),
+                        ->icon($element->active ? 'bg.check-circle-fill' : 'bg.dash-circle')
+                        ->route($route, $params),
                     Link::make()
                         ->icon('bg.pencil')
                         ->route($route, $params),

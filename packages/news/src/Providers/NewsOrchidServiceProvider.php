@@ -21,32 +21,32 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
         $menuList = [];
 
         $activeElements = [
-            'platform.news.element.list',
-            'platform.news.element.edit'
+            'platform.news.elements',
+            'platform.news.element'
         ];
         $menuList[] =  Menu::make(trans('akrbdk-news::admin.menu.elementsTitle'))
 //            ->title(trans('akrbdk-news::admin.menu.elementsTitle'))
             ->sort(50)
             ->icon('bg.file')
-            ->route('platform.news.element.list')
+            ->route('platform.news.elements')
             ->active([
-                'platform.news.element.list',
-                'platform.news.element.edit'
+                'platform.news.elements',
+                'platform.news.element'
             ])
             ->permission(NewsServiceProvider::PERMISSION);
 
         $activeCategories = [
-            'platform.news.category.list',
-            'platform.news.category.edit'
+            'platform.news.categories',
+            'platform.news.category'
         ];
         $menuList[] = Menu::make(trans('akrbdk-news::admin.menu.categoriesTitle'))
 //            ->title(trans('akrbdk-news::admin.menu.categoriesTitle'))
             ->sort(100)
             ->icon('bg.gear')
-            ->route('platform.news.category.list')
+            ->route('platform.news.categories')
             ->active([
-                'platform.news.category.list',
-                'platform.news.category.edit'
+                'platform.news.categories',
+                'platform.news.category'
             ])
             ->permission(NewsServiceProvider::PERMISSION);
 
@@ -60,8 +60,8 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
             }
 
             $activeSubCategory = [
-                route('platform.news.category.element.list', ['category' => $category]) . '*',
-                route('platform.news.category.element.edit', ['category' => $category]) . '/*'
+                route('platform.news.category.elements', ['category' => $category]) . '*',
+                route('platform.news.category.element', ['category' => $category]) . '/*'
             ];
             $activeSubCategories = array_merge($activeSubCategories, $activeSubCategory);
 
@@ -69,7 +69,7 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
                 ->sort($category->sort + 110)
                 ->icon('bg.file')
                 ->route(
-                    'platform.news.category.element.list', ['category' => $category]
+                    'platform.news.category.elements', ['category' => $category]
                 )
                 ->active($activeSubCategory)
                 ->permission(NewsServiceProvider::PERMISSION);

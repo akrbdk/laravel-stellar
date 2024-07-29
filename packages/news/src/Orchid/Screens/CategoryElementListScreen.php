@@ -45,7 +45,7 @@ class CategoryElementListScreen extends ElementListScreen
         return [
             Link::make(trans('akrbdk-news::admin.orchid.add'))
             ->icon('bn.plus-circle')
-            ->route('platform.news.category.element.list', ['category' => $this->categoryId])
+            ->route('platform.news.category.elements', ['category' => $this->categoryId])
         ];
     }
 

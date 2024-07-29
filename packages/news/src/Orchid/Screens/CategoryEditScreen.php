@@ -51,7 +51,7 @@ class CategoryEditScreen extends Screen
         return [
             Link::make(trans('akrbdk-news::admin.orchid.back'))
                 ->icon('bn.arrow-left-circle')
-                ->route('platform.news.category.list'),
+                ->route('platform.news.categories'),
             Button::make(trans('akrbdk-news::admin.orchid.delete'))
                 ->icon('bn.trash')
                 ->method('deleteCategory')
@@ -83,6 +83,6 @@ class CategoryEditScreen extends Screen
             ? Toast::info(trans('akrbdk-news::admin.orchid.success'))
             : Toast::warning(trans('akrbdk-news::admin.orchid.error'));
 
-        return redirect()->route('platform.news.category.list');
+        return redirect()->route('platform.news.categories');
     }
 }

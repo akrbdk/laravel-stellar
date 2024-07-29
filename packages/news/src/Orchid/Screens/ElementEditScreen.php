@@ -51,7 +51,7 @@ class ElementEditScreen extends Screen
         return [
             Link::make(trans('akrbdk-news::admin.orchid.back'))
                 ->icon('bn.arrow-left')
-                ->route('platform.news.element.list'),
+                ->route('platform.news.elements'),
             Button::make(trans('akrbdk-news::admin.orchid.delete'))
                 ->icon('bn.trash')
                 ->method('deleteElement')
@@ -86,7 +86,7 @@ class ElementEditScreen extends Screen
         $this->categoryId = (int)Route::current()->parameter('category');
 
         return $this->categoryId
-            ? redirect()->route('platform.news.category.element.list', ['category' => $this->categoryId])
-            : redirect()->route('platform.news.element.list');
+            ? redirect()->route('platform.news.category.elements', ['category' => $this->categoryId])
+            : redirect()->route('platform.news.elements');
     }
 }

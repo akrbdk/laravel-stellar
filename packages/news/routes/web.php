@@ -18,8 +18,9 @@ Route::domain(config('platform.domain'))
     ->middleware(['web', 'platform'])
     ->group(function (){
 
+        //Categories
         Route::screen('news/category/list', CategoryListScreen::class)
-            ->name('platform.news.category.list')
+            ->name('platform.news.categories')
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
@@ -27,7 +28,7 @@ Route::domain(config('platform.domain'))
             );
 
         Route::screen('news/category/edit/{category?}', CategoryEditScreen::class)
-            ->name('platform.news.category.edit')
+            ->name('platform.news.category')
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
@@ -35,16 +36,17 @@ Route::domain(config('platform.domain'))
                     ->push(trans('akrbdk-news::admin.menu.categoriesTitle'))
             );
 
-        Route::screen('news/element/list', ElementListScreen::class)
-            ->name('platform.news.element.list')
+        //Elements
+        Route::screen('news/list', ElementListScreen::class)
+            ->name('platform.news.elements')
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
                     ->push(trans('akrbdk-news::admin.menu.title'))
             );
 
-        Route::screen('news/element/edit/{element?}', ElementEditScreen::class)
-            ->name('platform.news.element.edit')
+        Route::screen('news/edit/{element?}', ElementEditScreen::class)
+            ->name('platform.news.element')
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
@@ -52,8 +54,9 @@ Route::domain(config('platform.domain'))
                     ->push(trans('akrbdk-news::admin.menu.elementsTitle'))
             );
 
+        //SUB Categories
         Route::screen('news/category/{category}/list', CategoryElementListScreen::class)
-            ->name('platform.news.category.element.list')
+            ->name('platform.news.category.elements')
             ->breadcrumbs(
                 static fn(Trail $trail) => $trail
                     ->parent('platform.index')
@@ -61,7 +64,7 @@ Route::domain(config('platform.domain'))
             );
 
         Route::screen('news/category/{category}/edit/{element?}', CategoryElementEditScreen::class)
-            ->name('platform.news.category.element.edit')
+            ->name('platform.news.category.element')
             ->breadcrumbs(static function(Trail $trail) {
                 $categoryId = (int)Route::current()->parameter('category_id', 0);
                 $category = resolve(CategoryRepository::class)->findByPrimary($categoryId);

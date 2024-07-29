@@ -41,7 +41,9 @@ class CategoryFilter extends Filter
      */
     public function run(Builder $builder): Builder
     {
-        if ($title = $this->request->get('title')) {
+        $title = $this->request->get('title');
+
+        if ($title) {
             $builder->where('title', 'like', '%' . $title . '%');
         }
 
@@ -57,8 +59,6 @@ class CategoryFilter extends Filter
     {
         return [
             Input::make('title')
-                ->type('text')
-                ->title(trans('akrbdk-news::admin.filters.title'))
                 ->placeholder(trans('akrbdk-news::admin.filters.searchTitle'))
                 ->value($this->request->get('title'))
         ];

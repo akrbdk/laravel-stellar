@@ -34,7 +34,7 @@ class ElementListScreen extends Screen
         return [
             Link::make(trans('akrbdk-news::admin.orchid.add'))
             ->icon('bn.plus-circle')
-            ->route('platform.news.element.edit')
+            ->route('platform.news.element')
         ];
     }
 

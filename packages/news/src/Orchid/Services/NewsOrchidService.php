@@ -39,7 +39,7 @@ class NewsOrchidService implements Contracts\OrchidService
 
         Toast::info(trans('akrbdk-news::admin.orchid.success'));
 
-        return redirect()->route('platform.news.category.list');
+        return redirect()->route('platform.news.categories');
     }
 
     public function saveElement(Element $element, Request $request): RedirectResponse
@@ -60,6 +60,6 @@ class NewsOrchidService implements Contracts\OrchidService
 
         Toast::info(trans('akrbdk-news::admin.orchid.success'));
 
-        return redirect()->route('platform.news.element.list');
+        return redirect()->route('platform.news.elements');
     }
 }

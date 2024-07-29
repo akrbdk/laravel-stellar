@@ -18,7 +18,7 @@ class CategoryElementEditScreen extends ElementEditScreen
         return [
             Link::make(trans('akrbdk-news::admin.orchid.back'))
                 ->icon('bs.arrow-left-circle')
-                ->route('platform.news.category.list'),
+                ->route('platform.news.categories'),
             Button::make(trans('akrbdk-news::admin.orchid.delete'))
                 ->icon('bs.trash')
                 ->method('deleteElement')

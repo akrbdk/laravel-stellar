@@ -36,8 +36,9 @@ return [
         'active_to' => 'Active to',
     ],
     'filters' => [
-        'title' => 'Title',
-        'searchTitle' => 'Search title...'
+        'title' => 'Filter',
+        'searchCategory' => 'Category',
+        'searchTitle' => 'Title'
     ],
     'permission' => [
         'access' => 'Full access to module'

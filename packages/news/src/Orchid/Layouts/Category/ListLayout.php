@@ -36,7 +36,7 @@ class ListLayout extends Table
                 ->sort()
                 ->filter(TD::FILTER_TEXT)
                 ->render(static function (Category $category) {
-                    return Link::make($category->title)->route('platform.news.element.list', ['category[]' => $category]);
+                    return Link::make($category->title)->route('platform.news.elements', ['category[]' => $category]);
                 }),
             TD::make('alias', trans('akrbdk-news::admin.fields.alias'))
                 ->sort()
@@ -46,12 +46,13 @@ class ListLayout extends Table
             TD::make('elements_count', trans('akrbdk-news::admin.fields.elements_count')),
             TD::make()->render(static function (Category $category) {
                 return Group::make([
-                    Link::make()->icon($category->active ? 'bg.check-circle-fill' : 'bg.dash-circle'),
+                    Link::make()->icon($category->active ? 'bg.check-circle-fill' : 'bg.dash-circle')
+                        ->route('platform.news.category', ['category' => $category]),
                     Link::make()->icon('bg.pencil')
-                        ->route('platform.news.category.edit', ['category' => $category]),
+                        ->route('platform.news.category', ['category' => $category]),
                     Button::make()->icon('bs.trash')
                         ->action(
-                            route('platform.news.category.edit', ['category' => $category, 'method' => 'deleteCategory'])
+                            route('platform.news.category', ['category' => $category, 'method' => 'deleteCategory'])
                         )
                         ->confirm(trans('akrbdk-news::admin.orchid.deleteConfirm'))
                 ]);
