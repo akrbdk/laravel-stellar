@@ -5,9 +5,9 @@ declare(strict_types=1);
 return [
     'menu' => [
         'title' => 'News',
-        'categoriesTitle' => 'Categories',
-        'subCategoriesTitle' => 'SubCategories',
-        'elementsTitle' => 'Elements',
+        'categoriesTitle' => 'All Categories',
+        'subCategoriesTitle' => 'Elements By Category',
+        'elementsTitle' => 'All Elements',
     ],
     'orchid' => [
         'success' => 'Success',

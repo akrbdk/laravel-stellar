@@ -25,7 +25,7 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
             'platform.news.element.edit'
         ];
         $menuList[] =  Menu::make(trans('akrbdk-news::admin.menu.elementsTitle'))
-            ->title(trans('akrbdk-news::admin.menu.elementsTitle'))
+//            ->title(trans('akrbdk-news::admin.menu.elementsTitle'))
             ->sort(50)
             ->icon('bg.file')
             ->route('platform.news.element.list')
@@ -40,7 +40,7 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
             'platform.news.category.edit'
         ];
         $menuList[] = Menu::make(trans('akrbdk-news::admin.menu.categoriesTitle'))
-            ->title(trans('akrbdk-news::admin.menu.categoriesTitle'))
+//            ->title(trans('akrbdk-news::admin.menu.categoriesTitle'))
             ->sort(100)
             ->icon('bg.gear')
             ->route('platform.news.category.list')
@@ -54,7 +54,8 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
         resolve(CategoryRepository::class)->getAll()->each(static function (Category $category) use(&$menuList, &$activeSubCategories){
             if(empty($activeSubCategories)){
                 $menuList[] = Menu::make()
-                    ->title(trans('akrbdk-news::admin.menu.subCategoriesTitle'))
+//                    ->title(trans('akrbdk-news::admin.menu.subCategoriesTitle'))
+                    ->sort($category->sort + 100)
                     ->permission(NewsServiceProvider::PERMISSION);
             }
 
@@ -65,7 +66,7 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
             $activeSubCategories = array_merge($activeSubCategories, $activeSubCategory);
 
             $menuList[] = Menu::make($category->title)
-                ->sort($category->sort + 100)
+                ->sort($category->sort + 110)
                 ->icon('bg.file')
                 ->route(
                     'platform.news.category.element.list', ['category' => $category]
@@ -78,7 +79,7 @@ class NewsOrchidServiceProvider extends OrchidServiceProvider
             Menu::make(trans('akrbdk-news::admin.menu.title'))
                 ->title(trans('akrbdk-news::admin.menu.title'))
                 ->icon('bs.database')
-                ->sort(1000)
+                ->sort(100)
                 ->active(array_merge($activeElements, $activeCategories, $activeSubCategories))
                 ->list($menuList)
                 ->permission(NewsServiceProvider::PERMISSION)
