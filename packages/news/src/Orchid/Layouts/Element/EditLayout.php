@@ -91,6 +91,7 @@ class EditLayout extends Rows
                 ->targetId()
                 ->groups(NewsServiceProvider::MODULE_NAME),
             Button::make(trans('akrbdk-news::admin.orchid.save'))
+                ->class('btn btn-secondary')
                 ->icon('bs.save')
                 ->method('saveElement')
         ];

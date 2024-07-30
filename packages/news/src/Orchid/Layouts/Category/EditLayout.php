@@ -36,6 +36,7 @@ class EditLayout extends Rows
             Input::make('category.alias')
                 ->title(trans('akrbdk-news::admin.fields.alias')),
             Button::make(trans('akrbdk-news::admin.orchid.save'))
+                ->class('btn btn-secondary')
                 ->icon('bs.save')
                 ->method('saveCategory')
         ];
