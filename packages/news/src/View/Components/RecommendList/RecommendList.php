@@ -2,12 +2,16 @@
 
 namespace Akrbdk\News\View\Components\RecommendList;
 
+use Akrbdk\News\Services\NewsService;
 use Akrbdk\News\View\Contracts\BaseComponent;
 use Closure;
 use Illuminate\Contracts\View\View;
 
 class RecommendList extends BaseComponent
 {
+
+    private int $primary = 0;
+
     /**
      * Create a new component instance.
      */
@@ -24,13 +28,19 @@ class RecommendList extends BaseComponent
     /**
      * Get the view / contents that represent the component.
      */
-    public function render(): View|Closure|string
+    public function render(): View|Closure|string|null
     {
-        return view('akrbdk-news::components.recommend-list');
+        $data = $this->getRenderData();
+
+        return !empty($data['elements']) && $data['elements']->isNotEmpty()
+            ? view('akrbdk-news::components.recommend-list', $data) :
+            null;
     }
 
     protected function getRenderData(): iterable
     {
-        // TODO: Implement getRenderData() method.
+        return [
+            'elements' => resolve(NewsService::class)->getRecommendList($this->primary)
+        ];
     }
 }

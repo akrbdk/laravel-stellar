@@ -75,3 +75,6 @@ Route::domain(config('platform.domain'))
                     ->push($category->exists ? $category->title : trans('akrbdk-news::admin.menu.categoriesTitle'));
         });
 });
+
+Route::get('/news/{alias}', \Akrbdk\News\Http\ElementController::class)
+    ->name('news.element');

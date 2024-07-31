@@ -43,6 +43,10 @@ class Element extends Model
      * @var mixed|string|null
      */
     public ?string $publishDateFormat = null;
+    /**
+     * @var mixed|string
+     */
+    public mixed $url;
 
     protected $fillable = [
         'title',

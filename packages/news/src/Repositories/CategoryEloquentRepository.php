@@ -32,7 +32,7 @@ class CategoryEloquentRepository implements Contracts\CategoryRepository
 
     public function getAll(): Collection
     {
-        return $this->model::query()->orderBy('sort')->orderBy('title')->get();
+        return $this->model::query()->where('active', true)->orderBy('sort')->withCount('elements')->orderBy('title')->get();
     }
 
     public function getAdminList(): LengthAwarePaginator

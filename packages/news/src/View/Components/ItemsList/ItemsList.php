@@ -2,6 +2,8 @@
 
 namespace Akrbdk\News\View\Components\ItemsList;
 
+use Akrbdk\News\Models\Category;
+use Akrbdk\News\Models\Element;
 use Akrbdk\News\Repositories\Contracts\ElementRepository;
 use Akrbdk\News\Services\Contracts\BaseService;
 use Akrbdk\News\Services\NewsService;
@@ -33,22 +35,22 @@ class ItemsList extends BaseComponent
     {
         $data = $this->getRenderData();
 
-        return isset($data['items']) && $data['items']->isNotEmpty() ? view('akrbdk-news::components.items-list', $data) : null;
+        return isset($data['categories']) && $data['categories']->isNotEmpty() ? view('akrbdk-news::components.items-list', $data) : null;
     }
 
     protected function getRenderData(): iterable
     {
         $data = [];
 
-        $data['categories'] = $this->newsService->getAllCategories();
-        $categoriesIds = $data['categories']->pluck('id')->toArray();
+        $categories = $this->newsService->getAllCategories();
 
-        $items = resolve(ElementRepository::class)
-            ->getList($categoriesIds, config('akrbdk-news.elementsCnt', 3));
-
-        $data['items'] = $this->newsService->prepareElements($items);
-
-        unset($categoriesIds, $items);
+        $categories->each(function (Category $category) use (&$data, ) {
+            if($category->elements_count){
+                $category->elements = $this->newsService->prepareElements($category->elements()->get());
+            }
+        });
+        $data['categories'] = $categories;
+        unset($categories);
 
         return $data;
     }

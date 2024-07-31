@@ -31,16 +31,29 @@ class NewsService implements Contracts\BaseService
 
     public function prepareElements(Collection $elements): Collection
     {
-        $dateFormat = config('akrbdk-news.dateFormat', 'j F Y');
-        $elements->each(function (Element $element) use ($dateFormat){
-            $element->publishDateFormat = $element->publish_date?->translatedFormat($dateFormat);
+        $elements->each(function (Element &$element) {
+            $element = $this->prepareElement($element);
         });
 
         return $elements;
     }
 
+    public function prepareElement(Element $element): Element
+    {
+        $dateFormat = config('akrbdk-news.dateFormat', 'j F Y');
+        $element->publishDateFormat = $element->publish_date?->translatedFormat($dateFormat);
+        $element->url = route('news.element', ['alias' => $element->alias], false);
+
+        return $element;
+    }
+
     public function getActiveElementByPrimary(int|string $primary): Element
     {
         return $this->elementRepository->findActiveByPrimary($primary);
+    }
+
+    public function getRecommendList(int $excludeId, int $limit = 3): Collection
+    {
+        return $this->prepareElements($this->elementRepository->getList(limit: $limit, excludeId: $excludeId));
     }
 }

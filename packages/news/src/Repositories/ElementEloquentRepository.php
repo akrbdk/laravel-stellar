@@ -59,7 +59,7 @@ class ElementEloquentRepository implements Contracts\ElementRepository
             ])->firstOrNew();
     }
 
-    public function getList(array $categories, int $limit = 0, int $offset = 0): Collection
+    public function getList(array $categories = [], int $limit = 0, int $offset = 0, int $excludeId = 0): Collection
     {
         $query = $this->model::query()
             ->select([
@@ -95,6 +95,10 @@ class ElementEloquentRepository implements Contracts\ElementRepository
             ])
             ->orderByDesc('publish_date')
             ->orderByDesc('id');
+
+        if($excludeId){
+            $query->where('id', '!=', $excludeId);
+        }
 
         if($limit){
             $query->limit($limit);

@@ -21,4 +21,8 @@ interface BaseService
     public function getActiveElementByPrimary(int|string $primary): Element;
 
     public function prepareElements(Collection $elements): Collection;
+
+    public function prepareElement(Element $element): Element;
+
+    public function getRecommendList(int $excludeId): Collection;
 }

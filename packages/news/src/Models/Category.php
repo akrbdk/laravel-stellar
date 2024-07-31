@@ -23,6 +23,7 @@ use Orchid\Screen\AsSource;
  * @property string $title
  * @property ?Carbon $created_at
  * @property ?Carbon $updated_at
+ * @property mixed $elements_count
  */
 
 class Category extends Model
@@ -33,6 +34,11 @@ class Category extends Model
 
     public const DEFAULT_SORT = 100;
     public const DEFAULT_INT = 0;
+
+    /**
+     * @var \Illuminate\Support\Collection|mixed
+     */
+    public mixed $elements;
 
     protected $fillable = [
         'title',
