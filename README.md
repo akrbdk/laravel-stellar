@@ -8,6 +8,7 @@
     ```bash
     php artisan migrate
     php artisan orchid:admin admin admin@admin.com password
-    php artisan db:seed --class=CategorySeeder
+    php artisan db:seed --class=\\Akrbdk\\News\\Database\\Seeders\\CategorySeeder
     ```
 4. Open in a browser: http://localhost:90
+5. Open admin panel in a browser: http://localhost:90/admin: admin@admin.com password
